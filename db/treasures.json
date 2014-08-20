@@ -1,18 +1,16 @@
 {
   "_id":{"$oid":"000000000000000000000001"},
-  "name":"gold",
+  "tName":"gold",
   "photo":"/img/gold.jpg",
-  "lat": "44.51",
-  "lng": "-88.01",
+  "loc": {"name": "Green Bay", "lat": "41.64", "lng":"-81.76"},
   "difficulty":"hard",
   "hint":"go to a pawn show"
 }
 {
   "_id":{"$oid":"000000000000000000000002"},
-  "name":"silver",
+  "tName":"silver",
   "photo":"/img/silver.jpg",
-  "lat": "36.16",
-  "lng": "86.78",
+  "loc": {"name":"Nashville", "lat": "36.16", "lng":"86.78"},
   "difficulty":"medium",
   "hint":"dig"
 }

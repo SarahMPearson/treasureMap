@@ -25,13 +25,14 @@ describe('Treasure', function(){
 
   describe('constructor', function(){
     it('should create a new Treasure object', function(){
-      var o = {name: 'gold', photo: '/img/gold.jpg', lat: '41.56', lng: '-75.87', difficulty: 'hard', hint: 'go to pawn shop'},
+      var o = {tName: 'gold', photo: '/img/gold.jpg', loc:{name:'Green Bay', lat: '41.56', lng: '-75.87'}, difficulty: 'hard', hint: 'go to pawn shop'},
           t = new Treasure(o);
       expect(t).to.be.instanceof(Treasure);
-      expect(t.name).to.equal('gold');
+      expect(t.tName).to.equal('gold');
       expect(t.photo).to.equal('/img/gold.jpg');
-      expect(t.lat).to.equal(41.56);
-      expect(t.lng).to.equal(-75.87);
+      expect(t.loc.name).to.equal('Green Bay');
+      expect(t.loc.lat).to.equal(41.56);
+      expect(t.loc.lng).to.equal(-75.87);
       expect(t.difficulty).to.equal('hard');
       expect(t.hint).to.equal('go to pawn shop');
     });
@@ -50,7 +51,7 @@ describe('Treasure', function(){
     it('should find one treasure by its id', function(done){
       Treasure.findById('000000000000000000000001', function(treasure){
         expect(treasure).to.be.instanceof(Treasure);
-        expect(treasure.name).to.equal('gold');
+        expect(treasure.tName).to.equal('gold');
         done();
       });
     });
@@ -58,10 +59,10 @@ describe('Treasure', function(){
 
   describe('.create', function(){
     it('should create a new treasure', function(done){
-      var o = {name: 'gold', photo: '/img/gold.jpg', lat: '41.56', lng: '-75.87', difficulty: 'hard', hint: 'go to pawn shop'};
+      var o = {tName: 'gold', photo: '/img/gold.jpg', loc:{name:' Green Bay', lat: '41.56', lng: '-75.87'}, difficulty: 'hard', hint: 'go to pawn shop'};
       Treasure.create(o, function(err, treasure){
         expect(treasure._id).to.be.instanceof(Mongo.ObjectID);
-        expect(treasure.name).to.equal('gold');
+        expect(treasure.tName).to.equal('gold');
         done();
       });
     });
