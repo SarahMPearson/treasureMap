@@ -61,6 +61,7 @@ describe('Treasure', function(){
       var o = {name: 'gold', photo: '/img/gold.jpg', lat: '41.56', lng: '-75.87', difficulty: 'hard', hint: 'go to pawn shop'};
       Treasure.create(o, function(err, treasure){
         expect(treasure._id).to.be.instanceof(Mongo.ObjectID);
+        expect(treasure.name).to.equal('gold');
         done();
       });
     });
