@@ -13,7 +13,10 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-  res.redirect('/treasures');
+  Treasure.create(treasure, function(){
+    res.redirect('/treasures');
+
+  });
 };
 
 exports.show = function(req, res){

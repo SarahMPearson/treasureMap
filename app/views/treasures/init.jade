@@ -1,18 +1,36 @@
 extends ../shared/template
 block content
-  h2 Home
-  .panel.panel-default
-    .panel-body
-      h4 Bootstrap Themes and Templates
-      ul
-        li: a(href='http://bootswatch.com/', target='_blank') http://bootswatch.com/
-        li: a(href='http://bootstrapzero.com/', target='_blank') http://bootstrapzero.com/
-        li: a(href='http://startbootstrap.com/', target='_blank') http://startbootstrap.com/
-        li: a(href='http://www.prepbootstrap.com/', target='_blank') http://www.prepbootstrap.com/
-        li: a(href='http://www.blacktie.co/', target='_blank') http://www.blacktie.co/
-        li: a(href='https://bootstrapmaster.com/', target='_blank') https://bootstrapmaster.com/
-        li: a(href='http://bootstrapstyler.com/', target='_blank') http://bootstrapstyler.com/
+  h2 Create a New Treasure
+    .row
+      .col-xs-12
+        form(role='form', method='post', action='/treasures')
+          .row
+            .col-xs-6
+              input#lat(type='hidden', name='lat')
+              input#lng(type='hidden', name='lng')
+              .form-group
+                label(for='tName') Treasure Name
+                input#name.form-control(type='text', placeholder='Gold', name='tName', autofocus =true)
+              .form-group
+                label(for='loc') Location
+                input#loc.form-control(type='text', name='loc', placeholder='Nashville')
+              .form-group
+                label(for='hint') Hint
+                br
+                textarea#hint(type='textbox',name:'hint', placeholder='dig here')
+            .col-xs-6
+              .form-group
+                label(for='photo') Photo
+                input.form-control#photo(type='file', name='photo', multiple=true)
+              .form-group
+                label(for='difficulty') Difficulty
+                br
+                select(name='difficulty')
+                  option Hard
+                  option Medium
+                  option Easy
+              button.btn.btn-success(type='submit') Add Treasure
 
 block scripts
-  script(src='/js/user/home.js')
+  script(src='/js/user/new-treasure.js')
 
