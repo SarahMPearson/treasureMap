@@ -1,10 +1,10 @@
-## name of project
+## Treasure Map
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/SarahMPearson/treasureMap.svg)](https://travis-ci.org/SarahMPearson/treasureMap)
+[![Coverage Status](https://coveralls.io/repos/SarahMPearson/treasureMap/badge.png)](https://coveralls.io/r/SarahMPearson/treasureMap)
 
 ### About
-write a description about your project
+A Treasure Map for the pirate in all of us
 
 ### Models
 ```
@@ -33,9 +33,6 @@ prop-f
 $ npm install
 $ npm test
 ```
-
-### Contributors
-- [Chyld Medford](https://github.com/chyld)
 
 ### License
 [MIT](LICENSE)
