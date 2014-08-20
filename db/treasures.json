@@ -1,0 +1,19 @@
+{
+  "_id":{"$oid":"000000000000000000000001"},
+  "name":"gold",
+  "photo":"/img/gold.jpg",
+  "lat": "44.51",
+  "lng": "-88.01",
+  "difficulty":"hard",
+  "hint":"go to a pawn show"
+}
+{
+  "_id":{"$oid":"000000000000000000000002"},
+  "name":"silver",
+  "photo":"/img/silver.jpg",
+  "lat": "36.16",
+  "lng": "86.78",
+  "difficulty":"medium",
+  "hint":"dig"
+}
+
