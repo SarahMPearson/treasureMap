@@ -1,14 +1,17 @@
 'use strict';
 
 var Mongo = require('mongodb'),
+    fs    = require('fs'),
+    path  = require('path'),
     _     = require('lodash');
 
 function Treasure(o){
-  this.tName      = o.tName;
-  this.photo      = o.photo;
-  this.loc        = {name:o.loc.name, lat:parseFloat(o.loc.lat), lng:parseFloat(o.loc.lng)};
-  this.difficulty = o.difficulty;
-  this.hint       = o.hint;
+  this.tName      = o.tName[0];
+  this.photo      = [];
+  this.loc        = {name:o.loc[0], lat:parseFloat(o.lat[0]), lng:parseFloat(o.lng[0])};
+  this.difficulty = o.difficulty[0];
+  this.hint       = o.hint[0];
+  this.isFound    = false;
 }
 
 Object.defineProperty(Treasure, 'collection', {
@@ -27,11 +30,32 @@ Treasure.findById = function(id, cb){
   });
 };
 
-Treasure.create = function(o, cb){
-  var t = new Treasure(o);
+Treasure.create = function(fields, files, cb){
+  console.log('THIS IS FIELDS', fields);
+  console.log('THIS IS FILES', files);
+  var t = new Treasure(fields, files);
+     // x = Treasure.prototype.uploadPhoto(t.photo);
+    //console.log("THIS IS X", x);
+  console.log('THIS is T', t);
+
   Treasure.collection.save(t, cb);
 };
 
+Treasure.prototype.uploadPhoto = function(files, cb){
+  var dir   = __dirname + '/../static/img/' + this._id,
+      exist = fs.existsSync(dir),
+      self  = this;
+
+  if(!exist){fs.mkdirSync(dir);}
+
+  files.photos.forEach(function(photo){
+    var ext    = path.extname(photo.path),
+        rel    = '/img/' + self._id + '/' + self.photos.length + ext,
+        abs    = dir + '/' + self.photos.length + ext;
+    fs.renameSync(photo.path, abs);
+    self.photos.push(rel);
+  });
+};
 
 module.exports = Treasure;
 

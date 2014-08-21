@@ -1,6 +1,8 @@
 'use strict';
 
-var Treasure = require('../models/treasure');
+var Treasure = require('../models/treasure'),
+    mp       = require('multiparty');
+
 
 exports.init = function(req, res){
   res.render('treasures/init');
@@ -13,9 +15,11 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-  Treasure.create(treasure, function(){
-    res.redirect('/treasures');
-
+  var form = new mp.Form();
+  form.parse(req, function(err, fields, files){
+    Treasure.create(fields, files, function(){
+      res.redirect('/treasures');
+    });
   });
 };
 

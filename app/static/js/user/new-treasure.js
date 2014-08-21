@@ -28,6 +28,7 @@
       $('#loc').val(name);
       $('#lat').val(lat);
       $('#lng').val(lng);
+      console.log('THIS IS NAME', name);
 
       $('form').submit();
     });

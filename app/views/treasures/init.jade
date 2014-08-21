@@ -3,7 +3,7 @@ block content
   h2 Create a New Treasure
     .row
       .col-xs-12
-        form(role='form', method='post', action='/treasures')
+        form(role='form', method='post', action='/treasures', enctype='multipart/form-data')
           .row
             .col-xs-6
               input#lat(type='hidden', name='lat')
@@ -17,7 +17,7 @@ block content
               .form-group
                 label(for='hint') Hint
                 br
-                textarea#hint(type='textbox',name:'hint', placeholder='dig here')
+                textarea#hint(type='textbox',name='hint', placeholder='dig here')
             .col-xs-6
               .form-group
                 label(for='photo') Photo

@@ -15,10 +15,11 @@ block content
             th Found
           tbody
             each treasure in treasures
-              tr
-                td= treasure.tName
+              tr(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
+                td: a(href='/treasures/#{treasure._id}')= treasure.tName
                 td= treasure.loc.name
                 td= treasure.difficulty
+                td= treasure.isFound
                 
 block scripts
   script(src='/js/user/treasures.js')
