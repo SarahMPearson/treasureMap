@@ -9,8 +9,9 @@ block content
     .col-xs-12
       #treasure(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
       .col-xs-6
-        #photo
         h2= treasure.tName
+        #photo
+         a(href='#{treasure.photo}'): img(src='#{treasure.photo}')
       .col-xs-6
         #hint
           h2 Hints

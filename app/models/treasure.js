@@ -7,7 +7,7 @@ var Mongo = require('mongodb'),
 
 function Treasure(o){
   this.tName      = o.tName[0];
-  this.photo      = [];
+  this.photo      = o.photo || [];
   this.loc        = {name:o.loc[0], lat:parseFloat(o.lat[0]), lng:parseFloat(o.lng[0])};
   this.difficulty = o.difficulty[0];
   this.hint       = o.hint[0];
@@ -36,7 +36,6 @@ Treasure.create = function(fields, cb){
   return(t);
 };
 
-
 Treasure.prototype.uploadPhoto = function(files, cb){
   var dir   = __dirname + '/../static/img/' + this._id,
       ext    = path.extname(files.photo[0].path),
@@ -54,6 +53,7 @@ Treasure.prototype.toggle = function(){
 
 Treasure.prototype.save = function(cb){
   Treasure.collection.save(this, cb);
+  self.photos.push(rel);
 };
 
 module.exports = Treasure;
