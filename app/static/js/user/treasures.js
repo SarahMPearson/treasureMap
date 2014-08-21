@@ -8,7 +8,7 @@
     initMap(38.88, -89.19, 4);
     var positions = getPositions();
     positions.forEach(function(pos){
-      addMarker(pos.lat, pos.lng, pos.loc);
+      addMarker(pos.lat, pos.lng, pos.name);
     });
   });
 
@@ -19,10 +19,10 @@
 
   function getPositions(){
     var positions = $('table tbody tr').toArray().map(function(tr){
-      var loc = $(tr).attr('data-loc'),
+      var name = $(tr).attr('data-name'),
           lat  = $(tr).attr('data-lat'),
           lng  = $(tr).attr('data-lng'),
-          pos  = {loc:loc, lat:parseFloat(lat), lng:parseFloat(lng)};
+          pos  = {loc:name, lat:parseFloat(lat), lng:parseFloat(lng)};
       return pos;
     });
 

@@ -30,31 +30,30 @@ Treasure.findById = function(id, cb){
   });
 };
 
-Treasure.create = function(fields, files, cb){
-  console.log('THIS IS FIELDS', fields);
-  console.log('THIS IS FILES', files);
-  var t = new Treasure(fields, files);
-     // x = Treasure.prototype.uploadPhoto(t.photo);
-    //console.log("THIS IS X", x);
-  console.log('THIS is T', t);
-
+Treasure.create = function(fields, cb){
+  var t = new Treasure(fields);
   Treasure.collection.save(t, cb);
+  return(t);
 };
+
 
 Treasure.prototype.uploadPhoto = function(files, cb){
   var dir   = __dirname + '/../static/img/' + this._id,
-      exist = fs.existsSync(dir),
-      self  = this;
+      ext    = path.extname(files.photo[0].path),
+      abs    = dir + '/' + this.tName + ext;
+  fs.mkdirSync(dir);
 
-  if(!exist){fs.mkdirSync(dir);}
+  fs.renameSync(files.photo[0].path, abs);
+  this.image = abs;
+  Treasure.collection.save(this,cb);
+};
 
-  files.photos.forEach(function(photo){
-    var ext    = path.extname(photo.path),
-        rel    = '/img/' + self._id + '/' + self.photos.length + ext,
-        abs    = dir + '/' + self.photos.length + ext;
-    fs.renameSync(photo.path, abs);
-    self.photos.push(rel);
-  });
+Treasure.prototype.toggle = function(){
+  this.isFound = true;
+};
+
+Treasure.prototype.save = function(cb){
+  Treasure.collection.save(this, cb);
 };
 
 module.exports = Treasure;

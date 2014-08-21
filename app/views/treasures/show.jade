@@ -2,18 +2,23 @@ extends ../shared/template
 block content
   h2 Show Page
   .row
-    .col-xs-4
-      #map
     .col-xs-8
+      #map
+    .col-xs-4
   .row
     .col-xs-12
       #treasure(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
       .col-xs-6
         #photo
+        h2= treasure.tName
       .col-xs-6
         #hint
-         // p #{treasure.hint}
-
+          h2 Hints
+          p #{treasure.hint}
+  .row
+    .col-xs-12
+      form(method='post', action='/treasures/#{treasure._id}/found')
+        button#found Found It!
 
 block scripts
   script(src='/js/user/treasure.js')

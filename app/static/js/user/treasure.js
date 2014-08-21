@@ -17,10 +17,10 @@
   }
 
   function getPosition(){
-    var $vacation = $('#vacation'),
-        name      = $vacation.attr('data-name'),
-        lat       = $vacation.attr('data-lat'),
-        lng       = $vacation.attr('data-lng'),
+    var $treasure = $('#treasure'),
+        name      = $treasure.attr('data-name'),
+        lat       = $treasure.attr('data-lat'),
+        lng       = $treasure.attr('data-lng'),
         pos       = {name:name, lat:parseFloat(lat), lng:parseFloat(lng)};
 
     return pos;
@@ -30,5 +30,6 @@
     var mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: zoom, mapTypeId: google.maps.MapTypeId.ROADMAP};
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
   }
+
 })();
 
