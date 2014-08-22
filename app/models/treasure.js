@@ -37,6 +37,7 @@ Treasure.create = function(fields, cb){
 };
 
 Treasure.prototype.uploadPhoto = function(files, cb){
+  console.log('ThIS is FILES', files);
   var dir   = __dirname + '/../static/img/' + this._id,
       ext    = path.extname(files.photo[0].path),
       abs    = dir + '/' + this.tName + ext;
@@ -53,7 +54,6 @@ Treasure.prototype.toggle = function(){
 
 Treasure.prototype.save = function(cb){
   Treasure.collection.save(this, cb);
-  self.photos.push(rel);
 };
 
 module.exports = Treasure;

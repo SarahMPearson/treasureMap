@@ -2,9 +2,8 @@ extends ../shared/template
 block content
   h2 Show Page
   .row
-    .col-xs-8
+    .col-xs-12
       #map
-    .col-xs-4
   .row
     .col-xs-12
       #treasure(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
@@ -13,7 +12,7 @@ block content
         #photo
          a(href='#{treasure.photo}'): img(src='#{treasure.photo}')
       .col-xs-6
-        #hint
+        #hints
           h2 Hints
           p #{treasure.hint}
   .row
